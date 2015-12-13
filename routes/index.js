@@ -6,7 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('index',{ partials: {
                         metatags: 'partials/metatags',
                         navbar: 'partials/navbar',
-                        footer: 'partials/footer'}});
+                        footer: 'partials/footer',
+                        }});
 });
 
 module.exports = router;
