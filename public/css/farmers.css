@@ -1,0 +1,44 @@
+@import url(common.css);
+
+.header {
+  color: #fff;
+}
+
+.signup {
+  border-left: 0;
+}
+
+/* Removes the border from bootstrap
+   and makes headers closer on mobile
+*/
+.page-header {
+  margin: 0;
+  padding-bottom: 9px;
+  border: 0;
+}
+
+@media(min-width:768px) {
+  .page-header {
+    padding-bottom: 9px;
+    margin: 40px 0 20px;
+  }
+  
+  /* Makes verticle bar on desktop */
+  .signup {
+    border-left: 1px solid #fff;
+  }
+}
+
+.form-elements {
+  margin-top: 2em;
+}
+
+.producer-type {
+  display: inline;
+  margin-right: 20px;
+}
+
+.form-submit {
+  width:100%;
+  margin-top:1em;
+}

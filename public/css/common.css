@@ -1,0 +1,133 @@
+body {
+    /* For Safari 5.1 to 6.0 */
+  background: -webkit-linear-gradient(45deg, rgba(244, 51, 44, 0.8) 30%, rgba(244, 207, 51, 0.8)), url(../img/farm2.jpg) no-repeat center center fixed;
+  /* For Opera 11.1 to 12.0 */
+  background: -o-linear-gradient(45deg, rgba(244, 51, 44, 0.8) 30%, rgba(244, 207, 51, 0.8)), url(../img/farm2.jpg) no-repeat center center fixed;
+  /* For Firefox 3.6 to 15 */
+  background: -moz-linear-gradient(45deg, rgba(244, 51, 44, 0.8) 30%, rgba(244, 207, 51, 0.8)), url(../img/farm2.jpg) no-repeat center center fixed;
+  /* Standard syntax (must be last) */
+  background: linear-gradient(45deg, rgba(244, 51, 44, 0.8) 30%, rgba(244, 207, 51, 0.8)) ,url(../img/farm2.jpg) no-repeat center center fixed;
+  
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#logo {
+    z-index: -1;
+    position: relative;
+    width: 100%;
+}
+
+.navbar-custom {
+    margin-bottom: 0;
+    border-bottom: 1px solid #fff;
+    letter-spacing: 1px;
+    color: #fff;
+    background: transparent;
+}
+
+.navbar-custom .navbar-brand:focus {
+    outline: 0;
+}
+
+.navbar-custom .navbar-brand .navbar-toggle {
+    padding: 4px 6px;
+    font-size: 16px;
+    color: #fff;
+}
+
+.navbar-custom .navbar-brand .navbar-toggle:focus,
+.navbar-custom .navbar-brand .navbar-toggle:active {
+    outline: 0;
+}
+
+.navbar-custom a {
+    color: #fff;
+}
+
+.navbar-custom .nav li a:hover {
+    outline: 0;
+    color: #777;
+    background-color: #F0F0F0;
+}
+
+.navbar-custom .nav li a:focus,
+.navbar-custom .nav li a:active {
+    outline: 0;
+    color: #fff;
+    background-color: grey;
+}
+
+.navbar-custom .nav li.active {
+    outline: 0;
+}
+
+.navbar-custom .nav li.active a {
+    color: #777;
+    background-color: #fff;
+}
+
+.navbar-custom .nav li.active a:hover {
+    color: #171717;
+}
+
+.navbar-brand {
+    float: left;
+    padding: 0;
+    width: 150px;
+}
+
+@media(min-width:768px) {
+    .navbar-custom {
+        border-bottom: 1px solid #fff;
+        letter-spacing: 1px;
+        background: 0 0;
+        padding: 0 5em;
+        -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        transition: background .5s ease-in-out,padding .5s ease-in-out;
+    }
+
+    .navbar-custom.top-nav-collapse {
+        padding: 0;
+        border-bottom: 1px solid #fff;
+        background: transparent;
+    }
+    
+    .navbar-collapse {
+        padding-top:15px;
+    }
+  
+    .navbar-brand {
+        float: left;
+        margin-left: -15px;
+        padding: 0;
+        width: 200px;
+        height: auto;
+    }
+    
+    .navbar-custom a {
+      border-radius: 5px;
+    }
+    
+    #search-form {
+      margin-right: 20px;
+      padding-left:0;
+      padding-right:0;
+    }
+}
+
+.icon-bar {
+    border: 1px solid white;
+}
+
+.white {
+    color:#fff;
+}
+
+footer {
+  color: #fff;
+  margin: 50px 0;
+}

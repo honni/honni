@@ -1,0 +1,165 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+@import url(common.css);
+
+#info {
+  background: url(../img/farm1.jpg) no-repeat center center;
+  width: 100%;
+  height: 50%;
+}
+
+.cover-shadow {
+  
+}
+
+/* Shadow for farm photos */
+.cover-shadow {
+  /* For Safari 5.1 to 6.0 */
+  background: -webkit-linear-gradient(rgba(0,0,0,0) 50%, rgba(0,0,0,0.8));
+  /* For Opera 11.1 to 12.0 */
+  background: -o-linear-gradient(rgba(0,0,0,0) 50%, rgba(0,0,0,0.8));
+  /* For Firefox 3.6 to 15 */
+  background: -moz-linear-gradient(rgba(0,0,0,0) 50%, rgba(0,0,0,0.8));
+  /* Standard syntax */
+  background: linear-gradient(rgba(0,0,0,0) 50%, rgba(0,0,0,0.8));
+}
+
+/* Excludes the logo */
+.shadow img {
+  z-index: -1;
+  position: relative;
+  width: 100%;
+}
+
+.intro-header {
+  background: no-repeat center center;
+  background-attachment: scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  margin-bottom: 50px;
+  height: 100%;
+}
+
+@media(min-width:768px) {
+  
+}
+
+
+
+
+
+
+/* Content on the farm photos */
+.content-overlay {
+  text-decoration: none;
+  color: #fff;
+  position: absolute;
+  bottom: 50%;
+  
+  left: 5%;
+  width: 90%;
+  display: inline;
+}
+
+/* Excludes the logo */
+.shadow img {
+  z-index: -1;
+  position: relative;
+  width: 100%;
+}
+
+
+.star-text {
+  float: left;
+  padding-top: 7px;
+  padding-left: 5px;
+}
+
+.farm-info {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 20%;
+}
+.farm-produce {
+  float: right;
+  padding: 3px;
+}
+
+
+.page-header {
+  color: #fff;
+}
+
+#add-item:before {
+  font-family: FontAwesome;
+  content: "\F067";
+  font-size: 10rem;
+}
+
+#add-item {
+  text-decoration: none;
+}
+
+.review-block {
+    padding-bottom: 2em;
+}
+
+.review-padding {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+
+.review-rating {
+  height: 34px;
+}
+
+form .star-text {
+  padding-left:0;
+  padding-right:5px;
+}
+
+
+
+
+
+/****** Style Star Rating Widget *****/
+
+.rating { 
+  border: none;
+  float: left;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  }

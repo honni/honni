@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{> metatags }}
+  
+    <!-- Custom CSS -->
+    <link href="/css/farm.css" rel="stylesheet">
+</head>
+
+<body>
+  
+  {{> navbar }}
+<!--
+    <div style="height: 50%">
+      <div class="cover-shadow" style="height:100%">
+        <div id="info2" class="intro-header" style="background-image: url('img/farm4.jpg')">
+      
+        </div>
+      </div>
+    </div>
+-->
+<!--    <div style="height: 50%">-->
+  <div style="height:50vh">
+<!--
+      <div class="cover-shadow" style="height:100%">
+        <img class="img-responsive" src="/img/farm4.jpg" alt="">
+-->
+      <div id="info2" class="intro-header" style="background-image: url('/img/farm4.jpg')">
+        <div class="cover-shadow" style="height:100%">
+        <div class="content-overlay">
+          <div class="left-cover">
+          <h1>Johnson Farms</h1>
+<!--          <h4>2 Miles</h4>-->
+          <!-- set title on all labels based on raiting -->
+          <fieldset class="rating">
+            <input type="radio" id="star5" name="rating-0" value="5" disabled/>
+            <label class="full" for="star5" title="Awesome - 5 stars"></label>
+            <input type="radio" id="star4half" name="rating-0" value="4.5" disabled/>
+            <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+            <input type="radio" id="star4" name="rating-0" value="4" disabled/>
+            <label class="full" for="star4" title="Pretty good - 4 stars"></label>
+            <input type="radio" id="star3half" name="rating-0" value="3.5" disabled/>
+            <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+            <input type="radio" id="star3" name="rating-0" value="3" disabled checked/>
+            <label class="full" for="star3" title="Meh - 3 stars"></label>
+            <input type="radio" id="star2half" name="rating-0" value="2.5" disabled/>
+            <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+            <input type="radio" id="star2" name="rating-0" value="2" disabled/>
+            <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+            <input type="radio" id="star1half" name="rating-0" value="1.5" disabled/>
+            <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+            <input type="radio" id="star1" name="rating-0" value="1" disabled/>
+            <label class="full" for="star1" title="Sucks big time - 1 star"></label>
+            <input type="radio" id="starhalf" name="rating-0" value="0.5" disabled/>
+            <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+          </fieldset>
+          <div class="star-text">
+            217 Reviews
+          </div>
+          <br><br>
+          <div style="float:left;">
+            <h4>Always serving the best vegetables and cheeses around!</h4>
+          </div>
+          </div>
+
+          <div class="farm-info">
+            <h4 id="phone-number">(000) 000-0000</h4>
+            
+            <a href="http://google.com" style="text-decoration:none;color:white">
+              <h4 id="address">0000 Main Street<br>Baltimore, MD 21250</h4>
+            </a>
+<!--
+            <div class="farm-produce">Meats</div>
+            <div class="farm-produce">Cheese</div>
+            <div class="farm-produce">Vegetables</div>
+            <div class="farm-produce">Fruits</div>
+            <div class="farm-produce">Honney</div>
+-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+    <!-- Page Content -->
+    <div class="container">
+      
+      <!-- Produce -->
+      <h1 class="page-header">Produce</h1>
+      <div class="row">
+        <div class="col-md-3 col-sm-4 col-xs-6 thumb">
+          <a class="thumbnail" href="#">
+            <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+            <div class="row">
+              <div class="col-xs-1 col-xs-offset-1 col-sm-1 col-sm-offset-1">
+                Apples
+              </div>
+              <div class="col-xs-1 col-xs-offset-4 col-sm-1 col-sm-offset-5">
+                $0.05
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-6 thumb">
+          <a class="thumbnail" href="#">
+            <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+            <div class="row">
+              <div class="col-xs-1 col-xs-offset-1 col-sm-1 col-sm-offset-1">
+                Apples
+              </div>
+              <div class="col-xs-1 col-xs-offset-4 col-sm-1 col-sm-offset-5">
+                $0.05
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-6 thumb">
+          <a class="thumbnail" href="#">
+            <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+            <div class="row">
+              <div class="col-xs-1 col-xs-offset-1 col-sm-1 col-sm-offset-1">
+                Apples
+              </div>
+              <div class="col-xs-1 col-xs-offset-4 col-sm-1 col-sm-offset-5">
+                $0.05
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-6 thumb">
+          <a class="thumbnail" href="#">
+            <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+            <div class="row">
+              <div class="col-xs-1 col-xs-offset-1 col-sm-1 col-sm-offset-1">
+                Apples
+              </div>
+              <div class="col-xs-1 col-xs-offset-4 col-sm-1 col-sm-offset-5">
+                $0.05
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-6 thumb">
+          <a class="thumbnail" href="#">
+            <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+            <div class="row">
+              <div class="col-xs-1 col-xs-offset-1 col-sm-1 col-sm-offset-1">
+                Apples
+              </div>
+              <div class="col-xs-1 col-xs-offset-4 col-sm-1 col-sm-offset-5">
+                $0.05
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-6 thumb">
+          <a class="thumbnail" href="#">
+            <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+            <div class="row">
+              <div class="col-xs-1 col-xs-offset-1 col-sm-1 col-sm-offset-1">
+                Apples
+              </div>
+              <div class="col-xs-1 col-xs-offset-4 col-sm-1 col-sm-offset-5">
+                $0.05
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-6 thumb">
+          <a class="thumbnail" href="#">
+            <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+            <div class="row">
+              <div class="col-xs-1 col-xs-offset-1 col-sm-1 col-sm-offset-1">
+                Apples
+              </div>
+              <div class="col-xs-1 col-xs-offset-4 col-sm-1 col-sm-offset-5">
+                $0.05
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-6 thumb">
+          <a id="add-item" class="thumbnail text-center" href="#"></a>
+        </div>
+      </div>
+<!--    </div>-->
+      
+    <!-- Reviews -->
+    <div class="white">
+      <h1 class="page-header">Reviews</h1>
+      <div class="row">
+        <div class="col-md-3 col-sm-4 col-xs-6 review-block">
+          <div class="row review-padding">
+          <h4>John Doe</h4>
+          
+          <!-- Rating -->
+          <!-- set title on all labels based on raiting -->
+          <fieldset class="rating">
+            <input type="radio" id="star5" name="rating-0" value="5" disabled/>
+            <label class="full" for="star5" title="Awesome - 5 stars"></label>
+            <input type="radio" id="star4half" name="rating-0" value="4.5" disabled/>
+            <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+            <input type="radio" id="star4" name="rating-0" value="4" disabled/>
+            <label class="full" for="star4" title="Pretty good - 4 stars"></label>
+            <input type="radio" id="star3half" name="rating-0" value="3.5" disabled/>
+            <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+            <input type="radio" id="star3" name="rating-0" value="3" disabled checked/>
+            <label class="full" for="star3" title="Meh - 3 stars"></label>
+            <input type="radio" id="star2half" name="rating-0" value="2.5" disabled/>
+            <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+            <input type="radio" id="star2" name="rating-0" value="2" disabled/>
+            <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+            <input type="radio" id="star1half" name="rating-0" value="1.5" disabled/>
+            <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+            <input type="radio" id="star1" name="rating-0" value="1" disabled/>
+            <label class="full" for="star1" title="Sucks big time - 1 star"></label>
+            <input type="radio" id="starhalf" name="rating-0" value="0.5" disabled/>
+            <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+          </fieldset>
+          <div class="star-text">
+            7/12/2015
+          </div>
+          </div>
+          <div class="row review-padding">
+            <div>This is the best place that I have ever see! Without them, I don't know where to find apples. It's not like they grow on trees or anything.</div>
+          </div>
+        </div>
+        
+        
+        <div class="col-md-3 col-sm-4 col-xs-6 review-block">
+          <div class="row review-padding">
+          <h4>Jane Doe</h4>
+          
+          <!-- Rating -->
+          <!-- set title on all labels based on raiting -->
+          <fieldset class="rating">
+            <input type="radio" id="star5" name="rating-0" value="5" disabled/>
+            <label class="full" for="star5" title="Awesome - 5 stars"></label>
+            <input type="radio" id="star4half" name="rating-0" value="4.5" disabled/>
+            <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+            <input type="radio" id="star4" name="rating-0" value="4" disabled/>
+            <label class="full" for="star4" title="Pretty good - 4 stars"></label>
+            <input type="radio" id="star3half" name="rating-0" value="3.5" disabled/>
+            <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+            <input type="radio" id="star3" name="rating-0" value="3" disabled checked/>
+            <label class="full" for="star3" title="Meh - 3 stars"></label>
+            <input type="radio" id="star2half" name="rating-0" value="2.5" disabled/>
+            <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+            <input type="radio" id="star2" name="rating-0" value="2" disabled/>
+            <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+            <input type="radio" id="star1half" name="rating-0" value="1.5" disabled/>
+            <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+            <input type="radio" id="star1" name="rating-0" value="1" disabled/>
+            <label class="full" for="star1" title="Sucks big time - 1 star"></label>
+            <input type="radio" id="starhalf" name="rating-0" value="0.5" disabled/>
+            <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+          </fieldset>
+          <div class="star-text">
+            7/12/2015
+          </div>
+          </div>
+          <div class="row review-padding">
+            <div>This is the best place that I have ever see! Without them, I don't know where to find apples. It's not like they grow on trees or anything.</div>
+          </div>
+        </div>
+        
+        
+        <div class="col-md-3 col-sm-4 col-xs-6 review-block">
+          <div class="row review-padding">
+          <h4>John Doe</h4>
+          
+          <!-- Rating -->
+          <!-- set title on all labels based on raiting -->
+          <fieldset class="rating">
+            <input type="radio" id="star5" name="rating-0" value="5" disabled/>
+            <label class="full" for="star5" title="Awesome - 5 stars"></label>
+            <input type="radio" id="star4half" name="rating-0" value="4.5" disabled/>
+            <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+            <input type="radio" id="star4" name="rating-0" value="4" disabled/>
+            <label class="full" for="star4" title="Pretty good - 4 stars"></label>
+            <input type="radio" id="star3half" name="rating-0" value="3.5" disabled/>
+            <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+            <input type="radio" id="star3" name="rating-0" value="3" disabled checked/>
+            <label class="full" for="star3" title="Meh - 3 stars"></label>
+            <input type="radio" id="star2half" name="rating-0" value="2.5" disabled/>
+            <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+            <input type="radio" id="star2" name="rating-0" value="2" disabled/>
+            <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+            <input type="radio" id="star1half" name="rating-0" value="1.5" disabled/>
+            <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+            <input type="radio" id="star1" name="rating-0" value="1" disabled/>
+            <label class="full" for="star1" title="Sucks big time - 1 star"></label>
+            <input type="radio" id="starhalf" name="rating-0" value="0.5" disabled/>
+            <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+          </fieldset>
+          <div class="star-text">
+            7/12/2015
+          </div>
+          </div>
+          <div class="row review-padding">
+            <div>This is the best place that I have ever see! Without them, I don't know where to find apples. It's not like they grow on trees or anything.</div>
+          </div>
+        </div>
+        
+        
+        <div class="col-md-3 col-sm-4 col-xs-6 review-block">
+          <div class="row review-padding">
+          <h4>John Doe</h4>
+          
+          <!-- Rating -->
+          <!-- set title on all labels based on raiting -->
+          <fieldset class="rating">
+            <input type="radio" id="star5" name="rating-0" value="5" disabled/>
+            <label class="full" for="star5" title="Awesome - 5 stars"></label>
+            <input type="radio" id="star4half" name="rating-0" value="4.5" disabled/>
+            <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+            <input type="radio" id="star4" name="rating-0" value="4" disabled/>
+            <label class="full" for="star4" title="Pretty good - 4 stars"></label>
+            <input type="radio" id="star3half" name="rating-0" value="3.5" disabled/>
+            <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+            <input type="radio" id="star3" name="rating-0" value="3" disabled checked/>
+            <label class="full" for="star3" title="Meh - 3 stars"></label>
+            <input type="radio" id="star2half" name="rating-0" value="2.5" disabled/>
+            <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+            <input type="radio" id="star2" name="rating-0" value="2" disabled/>
+            <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+            <input type="radio" id="star1half" name="rating-0" value="1.5" disabled/>
+            <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+            <input type="radio" id="star1" name="rating-0" value="1" disabled/>
+            <label class="full" for="star1" title="Sucks big time - 1 star"></label>
+            <input type="radio" id="starhalf" name="rating-0" value="0.5" disabled/>
+            <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+          </fieldset>
+          <div class="star-text">
+            7/12/2015
+          </div>
+          </div>
+          <div class="row review-padding">
+            <div>This is the best place that I have ever see! Without them, I don't know where to find apples. It's not like they grow on trees or anything.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Write a Review -->
+    <div class="white">
+      <h1 class="page-header">Write a Review</h1>
+            <!-- Review Form -->
+            <div class="row form-elements">
+              <div class="col-xs-12 col-sm-6">
+                <!-- TODO: Validate full name -->
+                <form name="review" action="farm.html" method="">
+                  <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" required>
+                  </div>
+                  <div class="form-group review-rating">
+                    <label class="star-text">Rating:</label>
+        <fieldset class="rating">
+          <input type="radio" id="star5-review" name="review-rating" value="5" required/>
+          <label class="full" for="star5-review" title="Awesome - 5 stars"></label>
+          <input type="radio" id="star4half-review" name="review-rating" value="4.5"/>
+          <label class="half" for="star4half-review" title="Pretty good - 4.5 stars"></label>
+          <input type="radio" id="star4-review" name="review-rating" value="4"/>
+          <label class="full" for="star4-review" title="Pretty good - 4 stars"></label>
+          <input type="radio" id="star3half-review" name="review-rating" value="3.5"/>
+          <label class="half" for="star3half-review" title="Meh - 3.5 stars"></label>
+          <input type="radio" id="star3-review" name="review-rating" value="3"/>
+          <label class="full" for="star3-review" title="Meh - 3 stars"></label>
+          <input type="radio" id="star2half-review" name="review-rating" value="2.5"/>
+          <label class="half" for="star2half-review" title="Kinda bad - 2.5 stars"></label>
+          <input type="radio" id="star2-review" name="review-rating" value="2"/>
+          <label class="full" for="star2-review" title="Kinda bad - 2 stars"></label>
+          <input type="radio" id="star1half-review" name="review-rating" value="1.5"/>
+          <label class="half" for="star1half-review" title="Meh - 1.5 stars"></label>
+          <input type="radio" id="star1-review" name="review-rating" value="1"/>
+          <label class="full" for="star1-review" title="Sucks big time - 1 star"></label>
+          <input type="radio" id="starhalf-review" name="review-rating" value="0.5"/>
+          <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+        </fieldset>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="comments">Comments:</label>
+                    <textarea class="form-control" rows="5" id="comments" placeholder="Start your review..." required></textarea>
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary form-submit">Submit Review</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+<!--
+        <div class="col-md-3 col-sm-4 col-xs-6">
+        </div>
+-->   
+      
+      
+      {{> footer }}
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
+  
+    <!-- Custom JavaScript -->
+    <script src="/js/farmers.js"></script>
+</body>
+
+</html>

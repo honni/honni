@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{> metatags }}
+  
+    <!-- Custom CSS -->
+    <link href="/css/search.css" rel="stylesheet">
+</head>
+
+<body>
+    
+    {{> navbar }}
+  
+    <!-- Page Content -->
+    <div class="container">
+      
+      <!-- Page Heading -->
+      <div class="row">
+        <div class="col-lg-12">
+          <h2 class="location">Farms Near: Baltimore MD, 21250</h2>
+        </div>
+        <div class="col-lg-12">
+          <button id="filter-results" type="button" class="btn btn-default">Filter Results</button>
+        </div>
+      </div>
+      <div id="filters" class="row filters" style="display:none">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="text-center">
+                <b>Sort By</b><br>
+                <div class="btn-group-vertical" role="group">
+                  <button type="button" class="btn btn-success">Least Distance</button>
+                  <button type="button" class="btn btn-default">Highest Rating</button>
+                  <button type="button" class="btn btn-default">Most Reviews</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="text-center">
+                <b>Produce</b><br>
+                <div class="btn-group-sm" role="group">
+                  <button type="button" class="btn btn-success produce">Meat</button>
+                  <button type="button" class="btn btn-default produce">Cheese</button>
+                  <button type="button" class="btn btn-default produce">Vegetables</button>
+                  <button type="button" class="btn btn-default produce">Fruits</button>
+                  <button type="button" class="btn btn-success produce">Honey</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="text-center">
+                <b>Producers</b><br>
+                <div class="btn-group-vertical" role="group">
+                  <button type="button" class="btn btn-success">Garden</button>
+                  <button type="button" class="btn btn-success">Farm</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+      
+      <hr>
+      
+      {{# farms }}
+      <div class="row">
+        
+        <!-- Center -->
+     <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3"> 
+        <!-- Offset to the left -->
+<!--        <div class="col-xs-12 col-sm-8 col-md-6">-->
+          <a href="/farm">
+            <div class="shadow round-photo">
+              <img class="img-responsive round-photo" src="/img/farm1.jpg" alt="">
+              <div class="content-overlay">
+                <h2>Johnson Farms</h2>
+                <h4>2 Miles</h4>
+                <!-- set title on all labels based on raiting -->
+                <fieldset class="rating">
+                  <input type="radio" id="star5" name="rating-0" value="5" disabled/>
+                  <label class="full" for="star5" title="Awesome - 5 stars"></label>
+                  <input type="radio" id="star4half" name="rating-0" value="4.5" disabled/>
+                  <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                  <input type="radio" id="star4" name="rating-0" value="4" disabled/>
+                  <label class="full" for="star4" title="Pretty good - 4 stars"></label>
+                  <input type="radio" id="star3half" name="rating-0" value="3.5" disabled/>
+                  <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                  <input type="radio" id="star3" name="rating-0" value="3" disabled checked/>
+                  <label class="full" for="star3" title="Meh - 3 stars"></label>
+                  <input type="radio" id="star2half" name="rating-0" value="2.5" disabled/>
+                  <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                  <input type="radio" id="star2" name="rating-0" value="2" disabled/>
+                  <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                  <input type="radio" id="star1half" name="rating-0" value="1.5" disabled/>
+                  <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                  <input type="radio" id="star1" name="rating-0" value="1" disabled/>
+                  <label class="full" for="star1" title="Sucks big time - 1 star"></label>
+                  <input type="radio" id="starhalf" name="rating-0" value="0.5" disabled/>
+                  <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                </fieldset>
+                <div class="reviews">
+                  217 Reviews
+                </div>
+                
+                <div class="farm-produce-list">
+                  <div class="farm-produce">Meats</div>
+                  <div class="farm-produce">Cheese</div>
+                  <div class="farm-produce">Vegetables</div>
+                  <div class="farm-produce">Fruits</div>
+                  <div class="farm-produce">Honey</div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+<!--
+        <div class="col-xs-12 col-sm-4 col-md-6">
+          <div class="farm-bio">
+            Always serving the best vegetables and cheeses around!
+          </div>
+        </div>
+-->
+      </div>
+
+      <hr>
+      {{/ farms }}
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+            <a href="#">
+              <div class="shadow round-photo">
+                <img class="img-responsive round-photo" src="/img/farm3.jpg" alt="">
+                <div class="content-overlay">
+                  <h2>Johnson Farms</h2>
+                  <h4>2 Miles</h4>
+                  <!-- set title on all labels based on raiting -->
+                  <fieldset class="rating">
+                    <input type="radio" id="star5" name="rating" value="5" disabled/>
+                    <label class="full" for="star5" title="Awesome - 5 stars"></label>
+                    <input type="radio" id="star4half" name="rating" value="4.5" disabled checked/>
+                    <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                    <input type="radio" id="star4" name="rating" value="4" disabled/>
+                    <label class="full" for="star4" title="Pretty good - 4 stars"></label>
+                    <input type="radio" id="star3half" name="rating" value="3.5" disabled/>
+                    <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                    <input type="radio" id="star3" name="rating" value="3" disabled/>
+                    <label class="full" for="star3" title="Meh - 3 stars"></label>
+                    <input type="radio" id="star2half" name="rating" value="2.5" disabled/>
+                    <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                    <input type="radio" id="star2" name="rating" value="2" disabled/>
+                    <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                    <input type="radio" id="star1half" name="rating" value="1.5" disabled/>
+                    <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                    <input type="radio" id="star1" name="rating" value="1" disabled/>
+                    <label class="full" for="star1" title="Sucks big time - 1 star"></label>
+                    <input type="radio" id="starhalf" name="rating" value="0.5" disabled/>
+                    <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                  </fieldset>
+                  <div class="reviews">217 Reviews</div>
+
+                  <div class="farm-produce-list">
+                    <div class="farm-produce">Meats</div>
+                    <div class="farm-produce">Cheese</div>
+                    <div class="farm-produce">Vegetables</div>
+                    <div class="farm-produce">Fruits</div>
+                    <div class="farm-produce">Honey</div>
+                  </div>                      
+                </div>
+              </div>
+            </a>
+        </div>
+      </div>
+
+      <hr>
+
+      <!-- Pagination -->
+      <div class="row text-center">
+        <div class="col-lg-12">
+          <ul class="pagination">
+            <li>
+                <a href="#">&laquo;</a>
+            </li>
+            <li class="active">
+                <a href="#">1</a>
+            </li>
+            <li>
+                <a href="#">2</a>
+            </li>
+            <li>
+                <a href="#">3</a>
+            </li>
+            <li>
+                <a href="#">4</a>
+            </li>
+            <li>
+                <a href="#">5</a>
+            </li>
+            <li>
+                <a href="#">&raquo;</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- /.row -->
+
+      {{> footer }}
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
+  
+    <!-- Custom JavaScript -->
+    <script src="/js/search.js"></script>
+
+</body>
+
+</html>

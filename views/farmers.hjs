@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{> metatags }}
+  
+    <!-- Custom CSS -->
+    <link href="/css/farmers.css" rel="stylesheet">
+</head>
+
+<body>
+    
+    {{> navbar }}
+  
+    <!-- Page Content -->
+    <div class="container">
+      
+      <!-- Page Heading -->
+      <div class="page-header">
+        <div class="row">
+          
+          <!-- Login -->
+          <div class="col-xs-12 col-sm-6">
+            <div class="text-center">
+              <h1 class="header">Login</h1>
+            </div>
+            
+            <!-- Login Form -->
+            <div class="row form-elements">
+              <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
+                <form name="login" action="" method="" onsubmit="return validateLogin()">
+                  <div class="form-group"> <!-- has-error has-feedback -->
+  <!--<label class="control-label" for="email">Email address</label>-->
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email Address">
+  <!--<span class="glyphicon glyphicon-remove form-control-feedback"></span>-->
+                  </div>
+
+                  <div class="form-group"> <!-- has-error has-feedback -->
+  <!--<label class="control-label" for="password">Password</label>-->
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+<!--<span class="glyphicon glyphicon-remove form-control-feedback"></span>-->
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary form-submit">Login</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Signup -->
+          <div class="col-xs-12 col-sm-6 signup">
+            <div class="text-center">
+              <h1 class="header">Sign up</h1>
+            </div>
+            
+            <!-- Signup Form -->
+            <div class="row form-elements white">
+              <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
+                <form name="signup" action="" method="" onsubmit="return validateSignup()">
+                  <div class="form-group">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
+                  </div>
+                  <div class="form-group text-center">
+                  <div data-toggle="buttons">
+                    <div class="producer-type">Producer Type:</div>
+                      <div class="btn-group">
+                        <label class="btn btn-success"> 
+                          <input type="radio" name="producerType" value="farmer" class="sr-only" required>
+                          Farmer
+                        </label>
+                        <label class="btn btn-success">
+                          <input type="radio" name="producerType" value="gardener" class="sr-only" required>
+                          Gardener
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="ZIP Code" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
+                  </div>
+                  <div>
+                    <div>
+                      Note: All produce listings are free for the first month,
+                      then you will have to play $5/listing every 2 weeks or
+                      $25/month for unlimited listing.
+                    </div>
+                    <br>
+                    <div>
+                    By creating an account, you agree to Honni’s
+                      <a style="color:lightblue">Terms of Service</a> and
+                      <a style="color:lightblue">Privacy Policy</a>.
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary form-submit">Sign up</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+      
+      {{> footer }}
+      
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
+  
+    <!-- Custom JavaScript -->
+    <script src="/js/farmers.js"></script>
+
+</body>
+
+</html>
