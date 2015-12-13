@@ -10,7 +10,7 @@
         <span class="icon-bar"></span>
       </button>
 
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="/">
         <img id="logo" alt="Honni" src="/img/logo.png">
       </a>
     </div>
