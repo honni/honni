@@ -36,13 +36,11 @@ router.post('/login', function(req, res, next) {
         
         // Creates a Query based on the User class and the email
         var query = new Parse.Query(User);
-        console.log("looking for: " + req.body.email);
         query.equalTo('email', req.body.email);
 
         // Find some objects based on our query
         query.find({
           success: function(results) {
-            console.log(results);
             // If there's there's an email address that matched
             if (results.length) {
               // Incorrect password
@@ -111,8 +109,6 @@ router.post('/new', function(req, res, next) {
   // Saves the producer object to the Parse database
   producer.save(null, {
     success: function(producer) {
-      console.log("Saved " + producer.get("zipcode"));
-      
       // Creates a new User in the Parse database
       var user = new Parse.User();
       user.set("username", req.body.email);
@@ -123,7 +119,6 @@ router.post('/new', function(req, res, next) {
       user.signUp(null, {
         success: function(user) {
           // Hooray! Let them use the app now.
-          console.log("Signed up " + user.get('email'));
 
           // Sets a user session cookie to expire in 30 days
           // The Parse.Session is automatically created and linked to this user
