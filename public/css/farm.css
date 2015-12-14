@@ -42,12 +42,9 @@
 }
 
 @media(min-width:768px) {
+  /* TODO: fix bio and contact info on small screens */
   
 }
-
-
-
-
 
 
 /* Content on the farm photos */
@@ -92,6 +89,32 @@
   color: #fff;
 }
 
+.crop {
+  width: 160px;
+  height:120px;
+  overflow: hidden;
+/*  border: 2px solid pink;*/
+}
+
+.crop img {
+  widows: 160px;
+  height: 120px;
+  /* moves the image to be centered */
+/*  margin: -75px 0 0 -100px;*/
+/*  border: 2px solid green;*/
+}
+.cropz {
+  /* sm and up */
+  width: 250px;
+  height: 200px;              
+  overflow: hidden;
+}
+.cropz img {
+  /* sm and up */
+  width: 250px;
+  height: 100%;
+}
+
 #add-item:before {
   font-family: FontAwesome;
   content: "\F067";
@@ -127,8 +150,32 @@ form .star-text {
 
 
 
-/****** Style Star Rating Widget *****/
+/****** Static Style Star Rating Widget *****/
+.static-rating { 
+  border: none;
+  float: left;
+}
 
+.static-rating > input { display: none; } 
+.static-rating > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.static-rating > .static-half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.static-rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+/****** Style Star Rating Widget *****/
 .rating { 
   border: none;
   float: left;

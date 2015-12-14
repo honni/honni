@@ -28,18 +28,34 @@
             <!-- Login Form -->
             <div class="row form-elements">
               <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
-                <form name="login" action="" method="" onsubmit="return validateLogin()">
-                  <div class="form-group"> <!-- has-error has-feedback -->
-  <!--<label class="control-label" for="email">Email address</label>-->
+                <form name="login" action="/farmers/login" method="post" onsubmit="return validateLogin()">
+                  
+                  {{# invalidLoginEmail }}
+                  <div class="form-group has-error has-feedback">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" value="{{ loginEmail }}">
+                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    <span class='help-block' style="color:#fff">Email address does not have an account</span>
+                  </div>
+                  {{/ invalidLoginEmail}}
+                  {{^ invalidLoginEmail }}
+                  <div class="form-group">
                     <input type="email" class="form-control" id="email" name="email" placeholder="Email Address">
-  <!--<span class="glyphicon glyphicon-remove form-control-feedback"></span>-->
                   </div>
+                  {{/ invalidLoginEmail }}
 
-                  <div class="form-group"> <!-- has-error has-feedback -->
-  <!--<label class="control-label" for="password">Password</label>-->
+                  {{# invalidLoginPassword }}
+                  <div class="form-group has-error has-feedback">
                     <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-<!--<span class="glyphicon glyphicon-remove form-control-feedback"></span>-->
+                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    <span class='help-block' style="color:#fff">Invalid password</span>
                   </div>
+                  {{/ invalidLoginPassword }}
+                  {{^ invalidLoginPassword }}
+                  <div class="form-group">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                  </div>
+                  {{/ invalidLoginPassword }}
+                  
                   <div class="form-group">
                     <button type="submit" class="btn btn-primary form-submit">Login</button>
                   </div>
@@ -57,19 +73,19 @@
             <!-- Signup Form -->
             <div class="row form-elements white">
               <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
-                <form name="signup" action="" method="" onsubmit="return validateSignup()">
+                <form name="signup" action="/farmers/new" method="post" onsubmit="return validateSignup()">
                   <div class="form-group">
                     <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
                   </div>
                   <div class="form-group text-center">
-                  <div data-toggle="buttons">
-                    <div class="producer-type">Producer Type:</div>
-                      <div class="btn-group">
-                        <label class="btn btn-success"> 
-                          <input type="radio" name="producerType" value="farmer" class="sr-only" required>
-                          Farmer
-                        </label>
-                        <label class="btn btn-success">
+                    <div data-toggle="buttons">
+                      <div class="producer-type">Producer Type:</div>
+                        <div class="btn-group">
+                          <label class="btn btn-success"> 
+                            <input type="radio" name="producerType" value="farmer" class="sr-only" required>
+                            Farmer
+                          </label>
+                          <label class="btn btn-success">
                           <input type="radio" name="producerType" value="gardener" class="sr-only" required>
                           Gardener
                         </label>
@@ -121,6 +137,7 @@
     <script src="/js/bootstrap.min.js"></script>
   
     <!-- Custom JavaScript -->
+    <script src="/js/invalidate-field.js"></script>
     <script src="/js/farmers.js"></script>
 
 </body>

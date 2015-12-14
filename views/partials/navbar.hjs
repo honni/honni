@@ -19,7 +19,12 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/">Home</a></li>
+        {{# loggedIn }}
+        <li><a href="/logout">Log out</a></li>
+        {{/ loggedIn }}
+        {{^ loggedIn }}
         <li><a href="/farmers">For Farmers</a></li>
+        {{/ loggedIn }}
       </ul>
       <form id="search-form" class="navbar-form navbar-right" role="search" action="/search" method="">
         <div class="input-group">

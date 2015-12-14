@@ -9,6 +9,7 @@ var routes = require('./routes/index');
 var search = require('./routes/search');
 var farmers = require('./routes/farmers');
 var farm = require('./routes/farm');
+var logout = require('./routes/logout');
 
 var app = express();
 
@@ -28,6 +29,7 @@ app.use('/', routes);
 app.use('/search', search);
 app.use('/farmers', farmers);
 app.use('/farm', farm);
+app.use('/logout', logout);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

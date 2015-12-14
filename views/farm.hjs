@@ -6,6 +6,9 @@
   
     <!-- Custom CSS -->
     <link href="/css/farm.css" rel="stylesheet">
+  
+    <!-- Bootstrap Form Helpers -->
+    <link href="/css/bootstrap-form-helpers.min.css" rel="stylesheet" media="screen">
 </head>
 
 <body>
@@ -26,8 +29,13 @@
       <div class="cover-shadow" style="height:100%">
         <img class="img-responsive" src="/img/farm4.jpg" alt="">
 -->
-      <div id="info2" class="intro-header" style="background-image: url('/img/{{farm.image}}')">
-        <div class="cover-shadow" style="height:100%">
+    <div id="info2" class="intro-header" style="background-image: url('{{farm.image}}')">
+      <div class="cover-shadow" style="height:100%">
+          {{# editable }}
+          <div class="text-center">
+            <button type="submit" class="btn btn-lg btn-primary form-submit" data-toggle="modal" data-target="#infoModal">Update Info</button>
+          </div>
+          {{/ editable }}
         <div class="content-overlay">
           <div class="left-cover">
           <h1>{{ farm.name }}</h1>
@@ -48,7 +56,7 @@
           <div class="farm-info">
             <h4 id="phone-number">{{ farm.phoneNumber }}</h4>
             
-            <a href="http://google.com" style="text-decoration:none;color:white">
+            <a href="http://maps.google.com?q={{farm.address.firstLine}} {{farm.address.secondLine}}" style="text-decoration:none;color:white">
               <h4 id="address">{{ farm.address.firstLine }}<br>{{ farm.address.secondLine }}</h4>
             </a>
 <!--
@@ -63,6 +71,58 @@
       </div>
     </div>
   </div>
+    {{# editable }}    
+    <!-- Produce Modal -->
+    <div class="modal fade" id="infoModal" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Update Producer Information</h4>
+          </div>
+          <div class="modal-body">
+            <form name="update-info" action="/farm/updateInfo" method="post" onsubmit="return validateInfo()" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="producer-name">Producer Name:</label>
+                <input type="text" class="form-control" id="producer-name" name="name" placeholder="Your Farm or Name" maxlength="40">
+              </div>
+              <div class="form-group">
+                <label for="edit-phone-number">Phone Number:</label>
+                <input type="text" class="form-control bfh-phone" id="edit-phone-number" name="phoneNumber" data-format="(ddd) ddd-dddd">
+              </div>
+              <div class="form-group">
+                <label for="address-first">Address First Line:</label>
+                <input type="text" class="form-control" id="address-first" name="addressFirst" placeholder="0000 Main Street" maxlength="50">
+              </div>
+              <div class="form-group">
+                <label for="address-second">Address Second Line:</label>
+                <input type="text" class="form-control" id="address-second" name="addressSecond" placeholder="Baltimore, MD 21250" maxlength="30">
+              </div>
+              <div class="form-group">
+                <label for="background-image">Background Image:</label>
+                <input type="file" class="form-control" id="background-image" name="image">
+                <p class="help-block">Max 10MB jpg, jpeg, png, bmp, svg, gif</p>
+              </div>
+              <div class="form-group">
+                <label for="bio">Short bio about yourself:</label>
+                <input type="text" class="form-control" id="bio" name="bio" placeholder="Specializes in..." maxlength="140">
+              </div>
+              <input type="hidden" name="id" value="{{farm.id}}"/>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary form-submit">Update Information</button>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    {{/ editable }}
     
     <!-- Page Content -->
     <div class="container">
@@ -71,26 +131,97 @@
       <h1 class="page-header">Produce</h1>
       <div class="row">
         {{# produce }}
-        <div class="col-md-3 col-sm-4 col-xs-6 thumb">
-          <a class="thumbnail" href="#">
-            <img class="img-responsive" src="{{ image }}" alt="">
+        <div class="col-md-3 col-sm-4 col-xs-6">
+          <div class="thumbnail" href="#">
+            <div class="crops">
+              <img class="img-responsive" src="{{ image }}" alt="">
+            </div>
             <div class="row">
               <div class="col-xs-1 col-xs-offset-1 col-sm-1 col-sm-offset-1">
                 {{ food }}
               </div>
               <div class="col-xs-1 col-xs-offset-4 col-sm-1 col-sm-offset-5">
-                {{ price }}
+                ${{ price }}
               </div>
             </div>
-          </a>
+          </div>
         </div>
         {{/ produce }}
-        
+        {{# editable }}
         <div class="col-md-3 col-sm-4 col-xs-6 thumb">
-          <a id="add-item" class="thumbnail text-center" href="#"></a>
+          <a id="add-item" class="thumbnail text-center" href="#" data-toggle="modal" data-target="#produceModal"></a>
+        </div>
+        {{/ editable }}
+      </div>
+      
+      {{# editable }}
+      <!-- Produce Modal -->
+      <div class="modal fade" id="produceModal" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Add a Produce Item</h4>
+            </div>
+            <div class="modal-body">
+              <form name="add-produce" action="/farm/addProduce" method="post" onsubmit="return validateProduce()" enctype="multipart/form-data">
+                <div class="form-group">
+                  <label for="produce-name">Produce Name:</label>
+                  <input type="text" class="form-control" id="produce-name" name="name" placeholder="Produce Name" required>
+                </div>
+                <div class="form-group">
+                  <label for="produce-price">Produce Price (in USD):</label>
+                  <input type="number" class="form-control" id="produce-price" name="price" placeholder="Produce Price" step="0.01" required>
+                </div>
+                <!-- TODO: Make produce types in Parse -->
+                <div class="form-group">
+                  <div data-toggle="buttons">
+                    <div style="margin-bottom:5px"><b>Produce Type:</b></div>
+                    <div class="btn-group">
+                      <label class="btn btn-default"> 
+                        <input type="radio" name="type" value="meat" class="sr-only" required>
+                        Meat
+                      </label>
+                      <label class="btn btn-default">
+                        <input type="radio" name="type" value="cheese" class="sr-only">
+                        Cheese
+                      </label>
+                      <label class="btn btn-default"> 
+                        <input type="radio" name="type" value="vegetable" class="sr-only">
+                        Vegetable
+                      </label>
+                      <label class="btn btn-default">
+                        <input type="radio" name="type" value="fruit" class="sr-only">
+                        Fruit
+                      </label>
+                      <label class="btn btn-default"> 
+                        <input type="radio" name="type" value="honey" class="sr-only">
+                        Honey
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="produce-image">Produce Image:</label>
+                  <input type="file" class="form-control" id="produce-image" name="image" required>
+                  <p class="help-block">Max 10MB jpg, jpeg, png, bmp, svg, gif</p>
+                </div>
+                <input type="hidden" name="id" value="{{farm.id}}"/>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary form-submit">Submit Produce</button>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
         </div>
       </div>
-<!--    </div>-->
+      {{/ editable }}
       
     <!-- Reviews -->
     <div class="white">
@@ -117,6 +248,7 @@
       </div>
     </div>
   
+    {{^ editable }}
     <!-- Write a Review -->
     <div class="white">
       <h1 class="page-header">Write a Review</h1>
@@ -124,31 +256,33 @@
       <div class="row form-elements">
         <div class="col-xs-12 col-sm-6">
           <!-- TODO: Validate full name -->
-          <form name="review" action="farm.html" method="">
+          <form name="review" action="/farm/submitReview" method="post">
             <div class="form-group">
               <label for="name">Full Name:</label>
               <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" required>
             </div>
             <div class="form-group review-rating">
               <label class="star-text">Rating:</label>
-  <fieldset class="rating">
-    {{{ reviewStars }}}
-  </fieldset>
+              <fieldset class="rating">
+                {{{ reviewStars }}}
+              </fieldset>
             </div>
 
             <div class="form-group">
               <label for="comments">Comments:</label>
-              <textarea class="form-control" rows="5" id="comments" placeholder="Start your review..." required></textarea>
+              <textarea class="form-control" rows="5" id="comments" name="comments" placeholder="Start your review..." required></textarea>
             </div>
             <div class="form-group">
               <button type="submit" class="btn btn-primary form-submit">Submit Review</button>
             </div>
+            <input type="hidden" name="id" value="{{farm.id}}"/>
           </form>
         </div>
       </div>
     </div>
+    {{/ editable}}
       
-      {{> footer }}
+    {{> footer }}
 
     </div>
     <!-- /.container -->
@@ -160,7 +294,11 @@
     <script src="/js/bootstrap.min.js"></script>
   
     <!-- Custom JavaScript -->
-    <script src="/js/farmers.js"></script>
+    <script src="/js/invalidate-field.js"></script>
+    <script src="/js/farm.js"></script>
+  
+    <!-- Bootstrap Form Helpers -->
+    <script src="/js/bootstrap-formhelpers-phone.js"></script>
 </body>
 
 </html>
