@@ -1,3 +1,2 @@
-# [Home page](http://michaelbishoff.github.io/honni-home)
-
-Implementing Honni Backend
+# [Honni](http://www.honni.org)
+The peer to peer local produce finder
