@@ -6,9 +6,6 @@
   
     <!-- Custom CSS -->
     <link href="/css/farm.css" rel="stylesheet">
-  
-    <!-- Bootstrap Form Helpers -->
-    <link href="/css/bootstrap-form-helpers.min.css" rel="stylesheet" media="screen">
 </head>
 
 <body>
@@ -29,7 +26,7 @@
       <div class="cover-shadow" style="height:100%">
         <img class="img-responsive" src="/img/farm4.jpg" alt="">
 -->
-    <div id="info2" class="intro-header" style="background-image: url('{{farm.image}}')">
+    <div id="info2" class="intro-header" style="background-image: url('{{producer.image}}')">
       <div class="cover-shadow" style="height:100%">
           {{# editable }}
           <div class="text-center">
@@ -38,26 +35,26 @@
           {{/ editable }}
         <div class="content-overlay">
           <div class="left-cover">
-          <h1>{{ farm.name }}</h1>
+          <h1>{{ producer.name }}</h1>
 <!--          <h4>2 Miles</h4>-->
           <!-- set title on all labels based on raiting -->
           <fieldset class="rating">
-            {{{ farm.stars }}}           
+            {{{ producer.stars }}}           
           </fieldset>
           <div class="star-text">
-            {{ farm.numReviews }} Reviews
+            {{ producer.numReviews }} Reviews
           </div>
           <br><br>
           <div style="float:left;">
-            <h4>{{ farm.bio }}</h4>
+            <h4>{{ producer.bio }}</h4>
           </div>
           </div>
 
           <div class="farm-info">
-            <h4 id="phone-number">{{ farm.phoneNumber }}</h4>
+            <h4 id="phone-number">{{ producer.phoneNumber }}</h4>
             
-            <a href="http://maps.google.com?q={{farm.address.firstLine}} {{farm.address.secondLine}}" style="text-decoration:none;color:white">
-              <h4 id="address">{{ farm.address.firstLine }}<br>{{ farm.address.secondLine }}</h4>
+            <a href="http://maps.google.com?q={{producer.address.firstLine}} {{producer.address.secondLine}}" style="text-decoration:none;color:white">
+              <h4 id="address">{{ producer.address.firstLine }}<br>{{ producer.address.secondLine }}</h4>
             </a>
 <!--
             <div class="farm-produce">Meats</div>
@@ -109,7 +106,7 @@
                 <label for="bio">Short bio about yourself:</label>
                 <input type="text" class="form-control" id="bio" name="bio" placeholder="Specializes in..." maxlength="140">
               </div>
-              <input type="hidden" name="id" value="{{farm.id}}"/>
+              <input type="hidden" name="id" value="{{producer.id}}"/>
               <div class="form-group">
                 <button type="submit" class="btn btn-primary form-submit">Update Information</button>
               </div>
@@ -133,12 +130,19 @@
         {{# produce }}
         <div class="col-md-3 col-sm-4 col-xs-6">
           <div class="thumbnail" href="#">
+            {{# editable }}
+            <form name="remove-produce" action="/farm/removeProduce" method="post">
+              <i class="icon-remove" style="position:absolute;color:red;font-size:20pt;right:25px;cursor:pointer;" onclick="this.parentNode.submit()"></i>
+              <input type="hidden" name="producerId" value="{{producer.id}}"/>
+              <input type="hidden" name="produceId" value="{{id}}"/>
+            </form>
+            {{/ editable }}
             <div class="crops">
               <img class="img-responsive" src="{{ image }}" alt="">
             </div>
             <div class="row">
               <div class="col-xs-1 col-xs-offset-1 col-sm-1 col-sm-offset-1">
-                {{ food }}
+                {{ name }}
               </div>
               <div class="col-xs-1 col-xs-offset-4 col-sm-1 col-sm-offset-5">
                 ${{ price }}
@@ -208,7 +212,7 @@
                   <input type="file" class="form-control" id="produce-image" name="image" required>
                   <p class="help-block">Max 10MB jpg, jpeg, png, bmp, svg, gif</p>
                 </div>
-                <input type="hidden" name="id" value="{{farm.id}}"/>
+                <input type="hidden" name="id" value="{{producer.id}}"/>
                 <div class="form-group">
                   <button type="submit" class="btn btn-primary form-submit">Submit Produce</button>
                 </div>
@@ -256,14 +260,16 @@
       <div class="row form-elements">
         <div class="col-xs-12 col-sm-6">
           <!-- TODO: Validate full name -->
-          <form name="review" action="/farm/submitReview" method="post">
+          <form name="review" action="/farm/submitReview" method="post" onsubmit="return validateReview()">
             <div class="form-group">
               <label for="name">Full Name:</label>
               <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" required>
             </div>
-            <div class="form-group review-rating">
+            <!-- review-rating is the div
+                 rating-review is the star input name -->
+            <div id="rating-group" class="form-group review-rating">
               <label class="star-text">Rating:</label>
-              <fieldset class="rating">
+              <fieldset class="rating dynamic-rating">
                 {{{ reviewStars }}}
               </fieldset>
             </div>
@@ -275,7 +281,7 @@
             <div class="form-group">
               <button type="submit" class="btn btn-primary form-submit">Submit Review</button>
             </div>
-            <input type="hidden" name="id" value="{{farm.id}}"/>
+            <input type="hidden" name="id" value="{{producer.id}}"/>
           </form>
         </div>
       </div>
@@ -295,10 +301,15 @@
   
     <!-- Custom JavaScript -->
     <script src="/js/invalidate-field.js"></script>
+    {{# editable }}
     <script src="/js/farm.js"></script>
   
     <!-- Bootstrap Form Helpers -->
     <script src="/js/bootstrap-formhelpers-phone.js"></script>
+    {{/ editable }}
+    {{^ editable }}
+    <script src="/js/validate-review.js"></script>
+    {{/ editable }}
 </body>
 
 </html>

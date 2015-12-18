@@ -28,7 +28,13 @@
         <!-- How to -->
         <h1 class="page-header">How to use Honni</h1>
         <div>
-  <!--        1. Search for a produce you are looking for-->
+          1. Enter your zipcode and then click the search button (top right)
+          <br>
+          2. Filter results by farm/garden properties and produce type
+          <br>
+          3. From the list, select a producer that you are interested in
+          <br>
+          4. See what produce they offer, their contact info, bio, ratings and reviews, address, and more!
         </div>
         
         <!-- Mission -->
@@ -38,9 +44,11 @@
         </div>
         
         <!-- Testimonials -->
+<!--
         <h1 class="page-header">Testimonials</h1>
         <div class="row white">
         </div>
+-->
       </div>
       
       {{> footer }}

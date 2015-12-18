@@ -40,7 +40,8 @@ router.get('/', function(req, res, next) {
           image:  image,
           distance: 2,
           farmId: results[i].id,
-          stars: makeStars(results[i].id, true, results[i].get('rating')),
+          stars: makeStars(results[i].id, true,
+                           Math.round(results[i].get('rating') * 2) / 2),
           numReviews: results[i].get('numReviews'),
           
           // TODO: Make a relation for types of produce

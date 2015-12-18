@@ -89,6 +89,7 @@
   color: #fff;
 }
 
+/* Trying to make every picture square with .crop or .cropz. .crops is nothing */
 .crop {
   width: 160px;
   height:120px;
@@ -150,38 +151,18 @@ form .star-text {
 
 
 
-/****** Static Style Star Rating Widget *****/
-.static-rating { 
-  border: none;
-  float: left;
-}
-
-.static-rating > input { display: none; } 
-.static-rating > label:before { 
-  margin: 5px;
-  font-size: 1.25em;
-  font-family: FontAwesome;
-  display: inline-block;
-  content: "\f005";
-}
-
-.static-rating > .static-half:before { 
-  content: "\f089";
-  position: absolute;
-}
-
-.static-rating > label { 
-  color: #ddd; 
- float: right; 
-}
 
 /****** Style Star Rating Widget *****/
+fieldset, label { margin: 0; padding: 0; }
+
 .rating { 
   border: none;
   float: left;
 }
 
 .rating > input { display: none; } 
+
+/* full star */
 .rating > label:before { 
   margin: 5px;
   font-size: 1.25em;
@@ -190,23 +171,30 @@ form .star-text {
   content: "\f005";
 }
 
+/* half star */
 .rating > .half:before { 
   content: "\f089";
   position: absolute;
 }
 
+/* grey star */
 .rating > label { 
   color: #ddd; 
  float: right; 
 }
 
+/* gold star */
+.rating > input:checked ~ label {
+  color: #FFD700;
+}
+
 /***** CSS Magic to Highlight Stars on Hover *****/
 
-.rating > input:checked ~ label, /* show gold star when clicked */
-.rating:not(:checked) > label:hover, /* hover current star */
-.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+.dynamic-rating > input:checked ~ label, /* show gold star when clicked */
+.dynamic-rating:not(:checked) > label:hover, /* hover current star */
+.dynamic-rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
 
-.rating > input:checked + label:hover, /* hover current star when changing rating */
-.rating > input:checked ~ label:hover,
-.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
-.rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
+.dynamic-rating > input:checked + label:hover, /* hover current star when changing rating */
+.dynamic-rating > input:checked ~ label:hover,
+.dynamic-rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.dynamic-rating > input:checked ~ label:hover ~ label { color: #FFED85;  }

@@ -36,7 +36,8 @@ router.get('/:id', function(req, res, next) {
       
           for (var i=0; i < results.length; i++) {
             produce.push({
-              food: results[i].get('name'),
+              id: results[i].id,
+              name: results[i].get('name'),
               price: results[i].get('price').toFixed(2), // 2 decimal places
               image: results[i].get('image').url()
             });
@@ -49,7 +50,7 @@ router.get('/:id', function(req, res, next) {
           reviewQuery.find({
             success: function(results) {
               var reviews = [];
-              dateFormat.masks.simpleDate = 'dd/MM/yyyy';
+              dateFormat.masks.simpleDate = 'm/d/yyyy';
               
               for (var i=0; i < results.length; i++) {
                 reviews.push({
@@ -100,13 +101,14 @@ router.get('/:id', function(req, res, next) {
         }});
     },
     error: function(object, error) {
-      // Produce Query failed. Displays the error
-      res.render('error', {message: error.message, error: error});
+      // Producer Query failed. Log the error
+      console.log(error);
+      res.redirect('/search');
     }
   });
 });
 
-/* POST producer page. */
+/* POST submit review */
 router.post('/submitReview', function(req, res, next) {
   
   // Finds the Producer class in Parse
@@ -161,7 +163,7 @@ router.post('/submitReview', function(req, res, next) {
     }});
 });
 
-/* POST producer page. */
+/* POST add produce */
 router.post('/addProduce', upload.single('image'), function(req, res, next) {
   // Missing the file. Displays the error
   if (!req.file || req.file.size === 0) {
@@ -244,6 +246,38 @@ router.post('/addProduce', upload.single('image'), function(req, res, next) {
       // Couldn't find producer. Displays the error
       res.render('error', {message: error.message, error: error});
     }});
+});
+
+/* POST delete produce */
+router.post('/removeProduce', function(req, res, next) {
+  console.log("prdocuer: " + req.body.producerId);
+  console.log("produce: " + req.body.produceId);
+  // Finds the Produce class in Parse
+  var Produce = Parse.Object.extend("Produce");
+  // Creates a Query based on the Produce class
+  var query = new Parse.Query(Produce);
+  
+  // Gets a single row based on ID
+  query.get(req.body.produceId, {
+    success: function(produce) {
+      produce.destroy({
+        success: function(produce) {
+          res.redirect('/farm/' + req.body.producerId);
+        },
+        error: function(produce, error) {
+          // Couldn't delete the produce. Displays the error
+          console.log(error);
+          res.render('error', {message: error.message, error: error});          
+        }
+      });
+    },
+    error: function(object, error) {
+      // Couldn't find the produce by ID. Displays the error
+      console.log("Couldn't find produce");
+      console.log(error);
+      res.render('error', {message: error.message, error: error});
+    }
+  });
 });
 
 /* POST update info page. */
@@ -356,7 +390,7 @@ function renderFarm(res, req, producer, image, produce, reviews, editable) {
              {partials: {metatags: 'partials/metatags',
                          navbar: 'partials/navbar',
                          footer: 'partials/footer'},
-              farm: {id: req.params.id,
+              producer: {id: req.params.id,
                      name: producer.get('name'),
                      image: image,
                      stars: makeStars(req.params.id, true,

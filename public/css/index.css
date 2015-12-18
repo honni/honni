@@ -1,6 +1,11 @@
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 @import url(common.css);
 
+/* Remove this when we have more content */
+html, body {
+  height:100%;
+}
+
 .page-content {
   font-size: 20px;
 }

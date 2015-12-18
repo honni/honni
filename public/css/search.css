@@ -42,6 +42,7 @@
   background: -moz-linear-gradient(rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.8));
   /* Standard syntax */
   background: linear-gradient(rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.8));
+  box-shadow: -8px 8px 24px #000;
 }
 
 /* Excludes the logo */

@@ -20,9 +20,6 @@ function makeStars(id, isDisabled, rating){
     if (isDisabled) {
       result += ' disabled';
     }
-    else if (i == 0) {
-      result += 'required';
-    }
     
     // Check the star if it's the rating
     if (rating == ratingFromIndex) {
@@ -30,7 +27,7 @@ function makeStars(id, isDisabled, rating){
     }
     
     // Closes the input field and creates the label
-    result += '/><label class="';
+    result += '/>\n<label class="';
     
     // Alternate half and full stars
     if (i % 2) {
@@ -42,11 +39,11 @@ function makeStars(id, isDisabled, rating){
     // If the rating is disabled, then show the rating title for all stars
     if (isDisabled) {
       result += '" for="star' + ratingFromIndex + '-' + id + '" title="';
-      result += titles[10 - (rating * 2)] + ' - ' + rating + ' stars"></label>';
+      result += titles[10 - (rating * 2)] + ' - ' + rating + ' stars"></label>\n';
     }
     else {
       result += '" for="star' + ratingFromIndex + '-' + id + '" title="';
-      result += titles[i] + ' - ' + ratingFromIndex + ' stars"></label>';
+      result += titles[i] + ' - ' + ratingFromIndex + ' stars"></label>\n';
     }
   }
  
