@@ -17,17 +17,28 @@ router.get('/', function(req, res, next) {
   // Creates a Query based on the Person class
   var query = new Parse.Query(Producer);
   
+  // SortBy filter
+  var sortBy = req.query.sortby;
   var sortByDistance;
   var sortByRating;
   var sortByNumReviews;
   var sortByValue;
   
+  // Produce type filter
+  var produceType = req.query.produceType;
+  // TODO: Don't hardcode the produce types
+  var typesOfProduce = {'Meat': false, 'Cheese': false, 'Vegetable': false,
+                        'Fruit': false, 'Honey': false};
+  var produceTypes = []; // [{name: 'Meat', selected: false}, ...]
+  
+  // Producer type filter
   var producerType = req.query.producerType;
   var producerGarden = true;
   var producerFarm = true;
   
+  
   // Setup the rating filter
-  if (req.query.sortby == 'rating') {
+  if (sortBy == 'rating') {
     // Sets the sort to render the button green
     sortByRating = true;
     sortByValue = 'rating';
@@ -35,7 +46,7 @@ router.get('/', function(req, res, next) {
     // Sorts the results in ascending order by the rating
     query.descending('rating');
     
-  } else if (req.query.sortby == 'num_reviews') {
+  } else if (sortBy == 'num_reviews') {
     // Sets the sort to render the button green
     sortByNumReviews = true;
     sortByValue = 'num_reviews';
@@ -50,6 +61,43 @@ router.get('/', function(req, res, next) {
     
     // TODO: Google maps API sorting by distance
   }
+    
+  
+  // Setup produce type filter
+  // TODO: Make an option to OR the produce types together
+  // If there's a produce type filter, limit the query on those types
+  if (produceType) {
+    // If there's multiple produce types selected
+    if (Array.isArray(produceType)) {
+      // Limit the query on each produce type and
+      
+      // ANDs the produce types together
+      query.containsAll('produceTypes', produceType);
+      
+      // Indicate that the type is selected on the frontend
+      for (var i=0; i < produceType.length; i++) {
+        typesOfProduce[produceType[i]] = true;
+      }
+      
+    } else { // Only one produce type is selected
+      query.equalTo('produceTypes', produceType);
+      typesOfProduce[produceType] = true;
+    }
+  }
+  
+  // Transforms the produce type filter object
+  // into an array for rendering correctly
+  // If the type of produce is still false, add its object to the produceTypes
+  for (var key in typesOfProduce) {
+    // If we added the key
+    if (typesOfProduce.hasOwnProperty(key)) {
+      produceTypes.push({
+        name: key,
+        selected: typesOfProduce[key]
+      });
+    }
+  }
+  
   
   // Setup the producer type filter
   if (producerType) {
@@ -66,6 +114,9 @@ router.get('/', function(req, res, next) {
       }
     }
   }
+  
+  // For pagination
+//  query.skip(10); // skip the first 10 results
   
   // Find some objects based on our query.
   query.find({
@@ -91,9 +142,7 @@ router.get('/', function(req, res, next) {
           stars: makeStars(results[i].id, true,
                            Math.round(results[i].get('rating') * 2) / 2),
           numReviews: results[i].get('numReviews'),
-          
-          // TODO: Make a relation for types of produce
-          produce: ['Meats', 'Cheese', 'Vegetables', 'Fruits', 'Honey']
+          produce: results[i].get('produceTypes')
         });
       }
       
@@ -111,6 +160,7 @@ router.get('/', function(req, res, next) {
            numReviews: sortByNumReviews,
            value: sortByValue
          },
+         produceTypes: produceTypes,
          producerType: {
            farm: producerFarm,
            garden: producerGarden

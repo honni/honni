@@ -62,13 +62,33 @@
 
               <div class="col-sm-4">
                 <div class="text-center">
-                  <b>Produce</b><br>
-                  <div class="btn-group-sm" role="group">
-                    <button type="button" class="btn btn-success produce">Meat</button>
-                    <button type="button" class="btn btn-default produce">Cheese</button>
-                    <button type="button" class="btn btn-default produce">Vegetables</button>
-                    <button type="button" class="btn btn-default produce">Fruits</button>
-                    <button type="button" class="btn btn-success produce">Honey</button>
+                  <div><b>Produce</b></div>
+                  <div id="produce-filter" class="btn-group-sm" role="group">
+<!--
+                    <label class="btn produce btn-success" onclick="toggleProduceType('produceTypeMeat')">
+                      <input type="checkbox" id="produceTypeMeat" name="produceType" class="sr-only" value="Meat" checked>Meat</label>
+                    <label class="btn produce btn-default" onclick="toggleProduceType('produceTypeCheese')">
+                      <input type="checkbox" id="produceTypeCheese" name="produceType" class="sr-only" value="Cheese">Cheese</label>
+                    <label class="btn produce btn-default" onclick="toggleProduceType('produceTypeVegetable')">
+                      <input type="checkbox" id="produceTypeVegetables" name="produceType" class="sr-only" value="Vegetable">Vegetable</label>
+                    <label class="btn produce btn-default" onclick="toggleProduceType('produceTypeFruit')">
+                      <input type="checkbox" id="produceTypeFruit" name="produceType" class="sr-only" value="Fruit">Fruit</label>
+-->
+                    
+                    {{# produceTypes }}
+                    <label class="btn produce 
+                                  {{# selected }}
+                                  btn-success
+                                  {{/ selected }}
+                                  {{^ selected }}
+                                  btn-default
+                                  {{/ selected }}" onclick="toggleProduceType('produceType{{ name }}')">
+                      <input type="checkbox" id="produceType{{ name }}" name="produceType" class="sr-only" value="{{ name }}" 
+                             {{# selected }}
+                             checked
+                             {{/ selected }}>{{ name }}</label>
+                    {{/ produceTypes }}
+                    <button type="button" class="btn btn-danger produce" onclick="clearProduceTypeFilter()">Clear</button>
                   </div>
                 </div>
               </div>
@@ -77,6 +97,7 @@
                 <div class="text-center">
                   <div><b>Producers</b></div>
                   <div class="btn-group-vertical" role="group">
+                    <!-- TODO: Loop this too -->
                     <label class="btn 
                                   {{#producerType.garden}}
                                   btn-success

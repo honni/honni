@@ -7,6 +7,26 @@ function setSortBy(sortOption) {
   filterResults();
 }
 
+function toggleProduceType(id) {
+  var produceType = document.getElementById(id);
+  
+  // Toggle the produce type
+  produceType.checked = !produceType.checked;
+
+  filterResults();
+}
+
+function clearProduceTypeFilter() {
+  var produceTypes = $("#produce-filter :input:checkbox");
+  
+  // Unchecks all of the produce type filters
+  for (var i=0; i < produceTypes.length; i++) {
+    produceTypes[i].checked = false;
+  }
+  
+  filterResults();
+}
+
 function toggleProducerType(id) {
   var producerType = document.getElementById(id);
   
