@@ -27,38 +27,91 @@
       <div id="filters" class="row filters" style="display:none">
         <div class="col-lg-12">
           <div class="row">
-            <div class="col-sm-4">
-              <div class="text-center">
-                <b>Sort By</b><br>
-                <div class="btn-group-vertical" role="group">
-                  <button type="button" class="btn btn-success">Least Distance</button>
-                  <button type="button" class="btn btn-default">Highest Rating</button>
-                  <button type="button" class="btn btn-default">Most Reviews</button>
+            <form id="filter-form" name="filter-form" action="/search" method="get">
+              <div class="col-sm-4">
+                <div class="text-center">
+                  <div><b>Sort By</b></div>
+                  <div class="btn-group-vertical" role="group">
+                        <!-- Sets the class for the button (green or white) -->
+                        <button type="button" class="btn 
+                                      {{# sortBy.distance }}
+                                      btn-success
+                                      {{/ sortBy.distance }}
+                                      {{^ sortBy.distance }}
+                                      btn-default
+                                      {{/ sortBy.distance }}" onclick="setSortBy('distance')">Least Distance</button>
+                        <button type="button" class="btn 
+                                      {{# sortBy.rating }}
+                                      btn-success
+                                      {{/ sortBy.rating }}
+                                      {{^ sortBy.rating }}
+                                      btn-default
+                                      {{/ sortBy.rating }}" onclick="setSortBy('rating')">Highest Rating</button>
+                        <button type="button" class="btn 
+                                      {{# sortBy.numReviews }}
+                                      btn-success
+                                      {{/ sortBy.numReviews }}
+                                      {{^ sortBy.numReviews }}
+                                      btn-default
+                                      {{/ sortBy.numReviews }}" onclick="setSortBy('num_reviews')">Most Reviews</button>
+                  </div>
+                  <!-- Sets the current sorting option -->
+                  <input type="hidden" id="sortby" name="sortby" value="{{sortBy.value}}">
                 </div>
               </div>
-            </div>
 
-            <div class="col-sm-4">
-              <div class="text-center">
-                <b>Produce</b><br>
-                <div class="btn-group-sm" role="group">
-                  <button type="button" class="btn btn-success produce">Meat</button>
-                  <button type="button" class="btn btn-default produce">Cheese</button>
-                  <button type="button" class="btn btn-default produce">Vegetables</button>
-                  <button type="button" class="btn btn-default produce">Fruits</button>
-                  <button type="button" class="btn btn-success produce">Honey</button>
+              <div class="col-sm-4">
+                <div class="text-center">
+                  <b>Produce</b><br>
+                  <div class="btn-group-sm" role="group">
+                    <button type="button" class="btn btn-success produce">Meat</button>
+                    <button type="button" class="btn btn-default produce">Cheese</button>
+                    <button type="button" class="btn btn-default produce">Vegetables</button>
+                    <button type="button" class="btn btn-default produce">Fruits</button>
+                    <button type="button" class="btn btn-success produce">Honey</button>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="text-center">
-                <b>Producers</b><br>
-                <div class="btn-group-vertical" role="group">
-                  <button type="button" class="btn btn-success">Garden</button>
-                  <button type="button" class="btn btn-success">Farm</button>
+              
+              <div class="col-sm-4">
+                <div class="text-center">
+                  <div><b>Producers</b></div>
+                  <div class="btn-group-vertical" role="group">
+                    <label class="btn 
+                                  {{#producerType.garden}}
+                                  btn-success
+                                  {{/producerType.garden}}
+                                  {{^producerType.garden}}
+                                  btn-default
+                                  {{/producerType.garden}}" onclick="toggleProducerType('producerTypeGarden')">
+                      <input type="checkbox" id="producerTypeGarden" name="producerType" class="sr-only" value="garden" 
+                             {{#producerType.garden}}
+                             checked
+                             {{/producerType.garden}}>Garden</label> 
+                    
+                    <label class="btn 
+                                  {{#producerType.farm}}
+                                  btn-success
+                                  {{/producerType.farm}}
+                                  {{^producerType.farm}}
+                                  btn-default
+                                  {{/producerType.farm}}" onclick="toggleProducerType('producerTypeFarm')">
+                      <input type="checkbox" id="producerTypeFarm" name="producerType" class="sr-only" value="farm" 
+                             {{#producerType.farm}}
+                             checked
+                             {{/producerType.farm}}>Farm</label>
+<!--
+                    <button type="button" class="btn btn-success" onclick="toggleProducerType('producerTypeGarden', 'garden')">Garden</button>
+                    <button type="button" class="btn btn-success" onclick="toggleProducerType('producerTypeFarm', 'farm')">Farm</button>
+-->
+                  </div>
+                  
+                  <!-- Sets the current producer type -->
+<!--                  <input type="hidden" id="producerTypeGarden" name="producerType" value="garden">  {{producerType.garden}} -->
+<!--                  <input type="hidden" id="producerTypeFarm" name="producerType" value="farm">  {{producerType.farm}} -->
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
