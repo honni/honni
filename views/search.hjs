@@ -88,7 +88,7 @@
                              checked
                              {{/ selected }}>{{ name }}</label>
                     {{/ produceTypes }}
-                    <button type="button" class="btn btn-danger produce" onclick="clearProduceTypeFilter()">Clear</button>
+                    <button type="button" class="btn btn-danger produce" onclick="clearProduceTypeFilter()">Clear All</button>
                   </div>
                 </div>
               </div>

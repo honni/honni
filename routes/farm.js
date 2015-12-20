@@ -199,46 +199,53 @@ router.post('/addProduce', upload.single('image'), function(req, res, next) {
                                      {base64: buf.toString('base64')});
           
           image.save().then(function(){
-              // Creating the Produce
-              var Produce = Parse.Object.extend("Produce");
+            // Creating the Produce
+            var Produce = Parse.Object.extend("Produce");
 
-              // Create the review
-              var produce = new Produce();
-              produce.set('name', req.body.name);
-              produce.set('price', parseFloat(req.body.price));
-              produce.set('type', req.body.type);
-              produce.set('image', image);
-              produce.set('producerId', req.body.id);
+            // Create the review
+            var produce = new Produce();
+            produce.set('name', req.body.name);
+            produce.set('price', parseFloat(req.body.price));
+            produce.set('type', req.body.type);
+            produce.set('image', image);
+            produce.set('producerId', req.body.id);
 
-              produce.save(null, {
-                success: function(produce) {
+            produce.save(null, {
+              success: function(produce) {
+                
+                var produceTypes = producer.get('produceTypes');
+                
+                // Need to add the new produce type to the producer
+                if (produceTypes.indexOf(req.body.type) == -1) {
+                  produceTypes.push(req.body.type);
+                  producer.set('produceTypes', produceTypes);
+                }
+                
+                var relation = producer.relation("produce");
+                relation.add(produce);
 
-                  var relation = producer.relation("produce");
-                  relation.add(produce);
-                  
-                  producer.save(null, {
-                    success: function(producer) {
-                      // Producer saved
-                      res.redirect('/farm/' + req.body.id);
-                    },
-                    error: function(producer, error) {
-                      // Couldn't save producer. Displays the error
-                      res.render('error', {message: error.message, error: error});
-                  }});
-                },
-                error: function(produce, error) {
-                  // Couldn't save review. Displays the error
-                  res.render('error', {message: error.message, error: error});
-              }});
-              
-            },
-            function(error) {
-              console.log("ERROR SAVING!!!");
-              console.log(error);
-              // Couldn't save the file. Displays the error
-              res.render('error', {message: error.message, error: error});
-            }
-          );
+                producer.save(null, {
+                  success: function(producer) {
+                    // Producer saved
+                    res.redirect('/farm/' + req.body.id);
+                  },
+                  error: function(producer, error) {
+                    // Couldn't save producer. Displays the error
+                    res.render('error', {message: error.message, error: error});
+                }});
+              },
+              error: function(produce, error) {
+                // Couldn't save review. Displays the error
+                res.render('error', {message: error.message, error: error});
+            }});
+
+          },
+          function(error) {
+            console.log("ERROR SAVING!!!");
+            console.log(error);
+            // Couldn't save the file. Displays the error
+            res.render('error', {message: error.message, error: error});
+          });
         });
       });
     },
@@ -249,6 +256,10 @@ router.post('/addProduce', upload.single('image'), function(req, res, next) {
 });
 
 /* POST delete produce */
+/* TODO: Remove the produce type if the farm is out of that produce type
+         or keep it because if they farm grew it once, then they probably
+         grow it a lot, but gardeners may change it up.
+*/
 router.post('/removeProduce', function(req, res, next) {
   console.log("prdocuer: " + req.body.producerId);
   console.log("produce: " + req.body.produceId);
@@ -386,6 +397,8 @@ router.post('/updateInfo', upload.single('image'), function(req, res, next) {
 
 /* Renders the farm to reduce duplicate code */
 function renderFarm(res, req, producer, image, produce, reviews, editable) {
+  var produceTypes = producer.get('produceTypes');
+  console.log();
   res.render('farm',
              {partials: {metatags: 'partials/metatags',
                          navbar: 'partials/navbar',
@@ -400,7 +413,8 @@ function renderFarm(res, req, producer, image, produce, reviews, editable) {
                      bio: producer.get('bio'),
                      phoneNumber: producer.get('phoneNumber'),
                      address: {firstLine: producer.get('addressFirstLine'),
-                               secondLine: producer.get('addressSecondLine')}},
+                               secondLine: producer.get('addressSecondLine')},
+                     produceTypes: produceTypes},
               produce: produce,
               reviews: reviews,
               reviewStars: makeStars('review', false),

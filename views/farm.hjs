@@ -126,6 +126,7 @@
       
       <!-- Produce -->
       <h1 class="page-header">Produce</h1>
+<!--      <h4>{{# producer.produceTypes }}{{.}}{{/ producer.produceTypes }}</h4>-->
       <div class="row">
         {{# produce }}
         <div class="col-md-3 col-sm-4 col-xs-6">
@@ -184,24 +185,25 @@
                   <div data-toggle="buttons">
                     <div style="margin-bottom:5px"><b>Produce Type:</b></div>
                     <div class="btn-group">
+                      <!-- TODO: Don't hard code the produce types -->
                       <label class="btn btn-default"> 
-                        <input type="radio" name="type" value="meat" class="sr-only" required>
+                        <input type="radio" name="type" value="Meat" class="sr-only" required>
                         Meat
                       </label>
                       <label class="btn btn-default">
-                        <input type="radio" name="type" value="cheese" class="sr-only">
+                        <input type="radio" name="type" value="Cheese" class="sr-only">
                         Cheese
                       </label>
                       <label class="btn btn-default"> 
-                        <input type="radio" name="type" value="vegetable" class="sr-only">
+                        <input type="radio" name="type" value="Vegetable" class="sr-only">
                         Vegetable
                       </label>
                       <label class="btn btn-default">
-                        <input type="radio" name="type" value="fruit" class="sr-only">
+                        <input type="radio" name="type" value="Fruit" class="sr-only">
                         Fruit
                       </label>
                       <label class="btn btn-default"> 
-                        <input type="radio" name="type" value="honey" class="sr-only">
+                        <input type="radio" name="type" value="Honey" class="sr-only">
                         Honey
                       </label>
                     </div>
