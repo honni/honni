@@ -23,7 +23,7 @@
         <li><a href="/logout">Log out</a></li>
         {{/ loggedIn }}
         {{^ loggedIn }}
-        <li><a href="/farmers">For Farmers</a></li>
+        <li><a href="/farmers">For Farmers and Gardeners</a></li>
         {{/ loggedIn }}
       </ul>
       <form id="search-form" class="navbar-form navbar-right" role="search" action="/search" method="">
