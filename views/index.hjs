@@ -31,20 +31,13 @@
             Honni connects consumers with farmers, gardeners, and local produce sellers. Watch our video below! 
              <br>
              <br>
-            <center><iframe src="https://player.vimeo.com/video/156108158" width="625" height="350" frameborder="1" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            <center><iframe src="https://player.vimeo.com/video/156108158" width="625" height="350" frameborder="2" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 <p><a href="https://vimeo.com/156108158"></a></p>
         </div>
         
                 <!-- How to -->
-        <h1 class="page-header">How to use Honni</h1>
+        <h1 class="page-header"></h1>
         <div>
-          1. Enter your zipcode and then click the search button (top right)
-          <br>
-          2. Filter results by farm/garden properties and produce type
-          <br>
-          3. From the list, select a producer that you are interested in
-          <br>
-          4. See what they have to offer, their contact info, bio, ratings and reviews, address, and more!
         </div>
         
         <h1 class="page-header"></h1>
