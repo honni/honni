@@ -28,7 +28,7 @@
       </ul>
       <form id="search-form" class="navbar-form navbar-right" role="search" action="/search" method="">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Produce near zipcode">
+          <input type="text" class="form-control" placeholder="Zipcode">
           <span class="input-group-btn">
             <button class="btn btn-default">
               <span class="glyphicon glyphicon-search"></span>
