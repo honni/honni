@@ -31,8 +31,9 @@
             Honni connects consumers with farmers, gardeners, and local produce sellers. Watch our video below! 
              <br>
              <br>
-            <center><iframe src="https://player.vimeo.com/video/156108158?portrait=0&title=0&byline=0" width="625" height="350" frameborder="2" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-<p><a href="https://vimeo.com/156108158"></a></p>
+            <center>
+            <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 80%; height: 80%; }
+            </style>
         </div>
         
 
