@@ -2,6 +2,7 @@ $("#filter-results").click(function() {
   $("#filters").slideToggle();
 });
 
+// sets the sortby input's value so that it's known when filter-form is submitted
 function setSortBy(sortOption) {
   document.getElementById('sortby').value = sortOption;
   filterResults();

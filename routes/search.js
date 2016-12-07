@@ -23,7 +23,9 @@ router.get('/', function(req, res, next) {
   var sortByRating;
   var sortByNumReviews;
   var sortByValue;
-  
+
+  var zipcode = req.query.zip; // zipcode from url
+
   // Produce type filter
   var produceType = req.query.produceType;
   // TODO: Don't hardcode the produce types
@@ -160,6 +162,7 @@ router.get('/', function(req, res, next) {
            numReviews: sortByNumReviews,
            value: sortByValue
          },
+         zip: zipcode,
          produceTypes: produceTypes,
          producerType: {
            farm: producerFarm,

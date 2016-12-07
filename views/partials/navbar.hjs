@@ -26,9 +26,9 @@
         <li><a href="/farmers">For Producers</a></li>
         {{/ loggedIn }}
       </ul>
-      <form id="search-form" class="navbar-form navbar-right" role="search" action="/search" method="">
+      <form id="search-form" class="navbar-form navbar-right" role="search" action="/search" method="GET">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Zipcode">
+          <input type="text" name="zip" class="form-control" placeholder="Zipcode" value="{{zip}}">
           <span class="input-group-btn">
             <button class="btn btn-default">
               <span class="glyphicon glyphicon-search"></span>
