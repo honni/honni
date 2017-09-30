@@ -17,6 +17,18 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hjs');
 
+// setup parse server!
+var api = new ParseServer({
+  databaseURI: process.env.MONGODB_URI,
+  appId: process.env.APP_ID,
+  masterKey: process.env.MASTER_KEY,
+  serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
+});
+// cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
+// there is also livequery http://docs.parseplatform.org/parse-server/guide/#live-queries
+var mountPath = process.env.PARSE_MOUNT || '/parse';
+app.use(mountPath, api);
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
