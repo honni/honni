@@ -11,7 +11,32 @@ The peer to peer local produce finder
 
 4. Install dependecies: `sudo npm install`
 
-5. Start the server with the [Parse database](http://parse.com) keys:  
-```PARSE_APP_ID=insert_parse_app_id_here PARSE_JS_KEY=insert_parse_javascript_key_here DEBUG=honni:* node ./bin/www```
+5. Start the server with the (one line) command:
+
+``` bash
+PARSE_MOUNT=/parse MONGODB_URI=mongodb://<dbuser>:<dbpassword>@ds157624.mlab.com:57624/honni-db APP_ID=<can_be_anything> MASTER_KEY=<can_be_anything> DEBUG=honni:* node ./bin/www
+```
 
 6. The server is now running! Navigate to [localhost:3000](http://localhost:3000)
+
+
+## Deployment Instructions:
+1. Create an account at mlab.com and create a new (empty) database and add a user
+
+2. Create a heroku.com app
+
+3. In the heroku app's settings set the config variables
+    * APP_ID:       <can_be_anything>
+    * DEBUG:        honni:*
+    * MASTER_KEY:   <can_be_anything>
+    * MONGODB_URI:  mongodb://<dbuser>:<dbpassword>@ds157624.mlab.com:57624/honni-db
+    * PARSE_MOUNT:  /parse
+    * SERVER_URL:   https://honni2.herokuapp.com/parse
+
+4. Choose "Heroku git" as the deployment method
+    1. [install heroku cli](https://devcenter.heroku.com/articles/heroku-cli#debian-ubuntu)
+    2. Follow heroku's CLI deployment instructions
+
+
+(The necessary code changes to migrate to a heroku hosted parse-server were made in commits cf16c and fc6fd)
+Useful links: [article1](https://code.tutsplus.com/tutorials/get-started-building-your-blog-with-parsejs-migration-to-your-own-parse-server--cms-27954) [article2](http://docs.parseplatform.org/js/guide/#initialize)
