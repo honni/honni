@@ -15,7 +15,7 @@
     "mongodb-runner": "^3.6.1",
     "morgan": "~1.6.1",
     "multer": "^1.1.0",
-    "parse": "^1.6.9",
+    "parse": "^1.10.0",
     "parse-server": "^2.6.2",
     "serve-favicon": "~2.3.0"
   }

@@ -3,7 +3,8 @@ var router = express.Router();
 
 // Include Parse
 var Parse = require('parse/node');
-Parse.initialize(process.env.PARSE_APP_ID, process.env.PARSE_JS_KEY);
+Parse.initialize(process.env.APP_ID);
+Parse.serverURL = process.env.SERVER_URL || 'http://localhost:3000/parse';
 Parse.User.enableUnsafeCurrentUser();
 
 var makeStars = require('../public/js/star-maker.js');

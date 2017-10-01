@@ -1,4 +1,5 @@
 var express = require('express');
+var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -22,10 +23,10 @@ var api = new ParseServer({
   databaseURI: process.env.MONGODB_URI,
   appId: process.env.APP_ID,
   masterKey: process.env.MASTER_KEY,
-  serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
+  serverURL: process.env.SERVER_URL || 'http://localhost:3000/parse',  // Don't forget to change to https if needed
+  // cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
+  // there is also livequery http://docs.parseplatform.org/parse-server/guide/#live-queries
 });
-// cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
-// there is also livequery http://docs.parseplatform.org/parse-server/guide/#live-queries
 var mountPath = process.env.PARSE_MOUNT || '/parse';
 app.use(mountPath, api);
 
@@ -74,5 +75,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-
-module.exports = app;
+module.exports = {
+  "app": app,
+  "ParseServer": ParseServer
+}
