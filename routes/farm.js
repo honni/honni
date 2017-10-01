@@ -181,7 +181,7 @@ router.post('/addProduce', upload.single('image'), function(req, res, next) {
   query.get(req.body.id, {
     success: function(producer) {
       // Found the producer
-      
+
       // Opening the file
       fs.open(req.file.path, 'r', function(err, fd) {
         if (err) {
@@ -203,7 +203,6 @@ router.post('/addProduce', upload.single('image'), function(req, res, next) {
             // Creating the Produce
             var Produce = Parse.Object.extend("Produce");
 
-            // Create the review
             var produce = new Produce();
             produce.set('name', req.body.name);
             produce.set('price', parseFloat(req.body.price));
@@ -215,7 +214,7 @@ router.post('/addProduce', upload.single('image'), function(req, res, next) {
               success: function(produce) {
                 
                 var produceTypes = producer.get('produceTypes');
-                
+
                 // Need to add the new produce type to the producer
                 if (produceTypes.indexOf(req.body.type) == -1) {
                   produceTypes.push(req.body.type);

@@ -106,6 +106,7 @@ router.post('/new', function(req, res, next) {
   producer.set('isTrialAccount', true);
   producer.set('rating', 0);
   producer.set('numReviews', 0);
+  producer.set('produceTypes', []);
 
   // Saves the producer object to the Parse database
   producer.save(null, {
