@@ -14,7 +14,7 @@ The peer to peer local produce finder
 5. Start the server with the (one line) command:
 
 ``` bash
-PARSE_MOUNT=/parse MONGODB_URI=mongodb://<dbuser>:<dbpassword>@ds157624.mlab.com:57624/honni-db APP_ID=<can_be_anything> MASTER_KEY=<can_be_anything> DEBUG=honni:* node ./bin/www
+PARSE_MOUNT=/parse MONGODB_URI=mongodb://<dbuser>:<dbpassword>@ds157624.mlab.com:57624/honni-db APP_ID=<can_be_anything> MASTER_KEY=<can_be_anything> GOOGLE_API_KEY=<Distance Matrix API Key> DEBUG=honni:* node ./bin/www
 ```
 
 6. The server is now running! Navigate to [localhost:3000](http://localhost:3000)

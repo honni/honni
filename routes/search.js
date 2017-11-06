@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const https = require("https");
 
 // Include Parse
 var Parse = require('parse/node');
@@ -8,6 +9,7 @@ Parse.serverURL = process.env.SERVER_URL || 'http://localhost:3000/parse';
 Parse.User.enableUnsafeCurrentUser();
 
 var makeStars = require('../public/js/star-maker.js');
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -61,7 +63,7 @@ router.get('/', function(req, res, next) {
     // Sets the sort to render the button green
     sortByDistance = true;
     sortByValue = 'distance';
-    
+
     // TODO: Google maps API sorting by distance
   }
     
@@ -124,9 +126,49 @@ router.get('/', function(req, res, next) {
   // Find some objects based on our query.
   query.find({
     // results is an array of objects that matched the query
-    success: function(results) {
+    success: function(results_all) {
+      console.log(results_all);
       var farms = [];
+      var results = results_all;
       
+      // google maps distance matrix API call is limited to 25 destinations
+      // TODO: handle when there are > 25 total farms. this is inefficient if there are many farms
+      if (results_all.length > 25) {
+          results = results_all.sliced(0, 25);
+      }
+      var destinations = "";
+      for (var i=0; i < results.length; i++) {
+          results[i]["value"] = 402;
+          destinations += results[i].get('zipcode');
+          if (i+1 !== results.length) {
+            destinations += "|";
+          }
+      }
+      console.log("results with initial value:");
+      console.log(results);
+      console.log("origin=" + zipcode);
+      console.log("destinations=" + destinations);
+
+      // for testing
+      destinations += "|99501|21022|21286"
+      const url="https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + zipcode + "&destinations=" + destinations + "&key=" + process.env.GOOGLE_API_KEY;
+      // make google maps api call
+      https.get(url, res => {
+        res.setEncoding("utf8");
+        let body = "";
+        res.on("data", data => {
+          body += data;
+        });
+        res.on("end", () => {
+          body = JSON.parse(body);
+          info = body.rows[0].elements;
+          console.log(info);
+
+          console.log(info[1].duration.value);
+        });
+      });
+
+
       for (var i=0; i < results.length; i++) {
         
         // Sets the image if the user doesn't have one
@@ -136,7 +178,7 @@ router.get('/', function(req, res, next) {
         } else {
           image = '/img/logo.png';
         }
-        
+
         farms.push({
           name: results[i].get('name'),
           image:  image,
