@@ -38,6 +38,7 @@ mongo ds157624.mlab.com:57624/honni-db -u admin --password
     * MONGODB_URI:  mongodb://<dbuser>:<dbpassword>@ds157624.mlab.com:57624/honni-db
     * PARSE_MOUNT:  /parse
     * SERVER_URL:   https://honni2.herokuapp.com/parse
+    * GOOGLE_API_KEY: <Distance Matrix API KEY>
 
 4. Choose "Heroku git" as the deployment method
     1. [Install heroku cli](https://devcenter.heroku.com/articles/heroku-cli#debian-ubuntu)
